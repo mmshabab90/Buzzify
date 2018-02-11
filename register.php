@@ -1,4 +1,7 @@
 <?php
+    include("includes/classes/Account.php");
+    $account = new Account();
+
     include("includes/handlers/registerHandler.php");
     include("includes/handlers/loginHandler.php");
 ?>
@@ -81,21 +84,26 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    </div>
                                     <form id="loginForm" action="register.php" method="post">
                                         <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                                             <div class="form-group">
+                                                <?php echo ($account->getError("Your first name should be in between 2 and 25 characters")); ?>
                                                 <label class="control-label required" for="firstName"> First Name<sup style="color:red">*</sup></label>
                                                 <input id="firstName" name="firstName" type="text" class="form-control" placeholder="Enter Your First Name" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                                             <div class="form-group">
+                                                <?php echo ($account->getError("Your last name should be in between 2 and 25 characters")); ?>
                                                 <label class="control-label required" for="lastName"> Last Name<sup style="color:red">*</sup></label>
                                                 <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Enter Your Last Name" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                                             <div class="form-group">
+                                                <?php echo ($account->getError("Your emails don't match")); ?>
+                                                <?php echo ($account->getError("Your emails id is not valid")); ?>
                                                 <label class="control-label required" for="registerEmail">Email<sup style="color:red">*</sup></label>
                                                 <input id="registerEmail" name="registerEmail" type="email" class="form-control" placeholder="Enter Email Here" required>
                                             </div>
@@ -108,6 +116,9 @@
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                                             <div class="form-group">
+                                                <?php echo ($account->getError("Your passwords don't match")); ?>
+                                                <?php echo ($account->getError("Your passwords can ony contain numbers and letters")); ?>
+                                                <?php echo ($account->getError("Your password should be in between 8 and 30 characters")); ?>
                                                 <label class="control-label required" for="registerPassword">Password<sup style="color:red">*</sup></label>
                                                 <input id="registerPassword" name="registerPassword" type="password" class="form-control" placeholder="password" required>
                                             </div>

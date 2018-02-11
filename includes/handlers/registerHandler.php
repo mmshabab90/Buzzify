@@ -27,9 +27,13 @@ if(isset($_POST['btnRegister'])){
     $registerPassword = sanitizeFormPassword($_POST['registerPassword']);
     $confirmPassword = sanitizeFormPassword($_POST['confirmPassword']);
     
-    echo $firstName. " ". $lastName. " ". $registerEmail. " ". $confirmEmail. " ". $registerPassword. " ". $confirmPassword;
-    
-    
+    $wasSuccessfull = $account->register($firstName, $lastName, $registerEmail, $confirmEmail, $registerPassword, $confirmPassword);
+
+    if($wasSuccessfull == true)
+    {
+        header("Location: index.php");
+    }
+    //echo $firstName. " ". $lastName. " ". $registerEmail. " ". $confirmEmail. " ". $registerPassword. " ". $confirmPassword;
     
 }
 
